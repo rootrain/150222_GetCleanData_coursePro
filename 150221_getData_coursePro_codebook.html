@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>###project name 
+getting and cleaning data course project</p>
+
+<p>###purpose
+This project has been conducted to make tudy data set using Human Activity Recognition Using Smartphones Dataset[1].</p>
+
+<p>###variables in the project</p>
+
+<p>The data are normalized and there is no unit.
+Information of variables using in this analysis are shown below, but more detail are described in the features_info.txt in the datafolder[2].</p>
+
+<p>The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix &#39;t&#39; to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. </p>
+
+<p>Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). </p>
+
+<p>Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the &#39;f&#39; to indicate frequency domain signals). </p>
+
+<p>These signals were used to estimate variables of the feature vector for each pattern:<br/>
+&#39;-XYZ&#39; is used to denote 3-axial signals in the X, Y and Z directions.</p>
+
+<p>tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag</p>
+
+<p>The set of variables that were estimated from these signals are: </p>
+
+<p>mean(): Mean value
+std(): Standard deviation
+mad(): Median absolute deviation 
+max(): Largest value in array
+min(): Smallest value in array
+sma(): Signal magnitude area
+energy(): Energy measure. Sum of the squares divided by the number of values. 
+iqr(): Interquartile range 
+entropy(): Signal entropy
+arCoeff(): Autorregresion coefficients with Burg order equal to 4
+correlation(): correlation coefficient between two signals
+maxInds(): index of the frequency component with largest magnitude
+meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+skewness(): skewness of the frequency domain signal 
+kurtosis(): kurtosis of the frequency domain signal 
+bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+angle(): Angle between to vectors.</p>
+
+<p>Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:</p>
+
+<p>gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean</p>
+
+<p>###data
+The data using in this analysis was obtained from [2] and more detailed information including the process of obtaining data are [4].</p>
+
+<p>###transformation
+The data in [2] were already transformed, more detailed information are shown in the features_info.txt in the datafolder[2].
+In this analysis, we did not any transformation.</p>
+
+<p>###work
+All procedures almost followed the instruction of this course project[3].</p>
+
+<p>1,making merged dataset
+Download the data from [2].
+Read 6 files in train and test folders using read.table() to make test and train data.
+At every step, check the dimention of data using dim().</p>
+
+<p>for train data
+x_train&lt;-read.table(&ldquo;./train/X_train.txt&rdquo;)
+y_train&lt;-read.table(&ldquo;./train/y_train.txt&rdquo;)
+sub_train&lt;-read.table(&ldquo;./train/subject_train.txt&rdquo;)</p>
+
+<p>for test data
+x_test&lt;-read.table(&ldquo;./test/X_test.txt&rdquo;)
+y_test&lt;-read.table(&ldquo;./test/y_test.txt&rdquo;)
+sub_test&lt;-read.table(&ldquo;./test/subject_test.txt&rdquo;)</p>
+
+<p>Combine each dataset using(cbind().
+trainset&lt;-cbind(x_train,y_train,sub_train)
+testset&lt;-cbind(x_test,y_test,sub_test)</p>
+
+<p>Merge train and test dataset using rbind().
+all&lt;-rbind(trainset,testset)</p>
+
+<p>2,calculate the mean or standard deviation of each measurement
+Using the whole dataset, all, calculate the mean or stadard deviation of each measurement.
+mn&lt;-apply(all[1:561],2,mean)
+s&lt;-apply(all[1:561],2,sd)</p>
+
+<p>3,change the name of activity column
+Using gsub(), change the y names to activity names descripted in activity_labels.txt.</p>
+
+<p>all[,562]&lt;-gsub(&ldquo;1&rdquo;,&ldquo;WALKING&rdquo;,all[,562])
+all[,562]&lt;-gsub(&ldquo;2&rdquo;,&ldquo;WALKING_UPSTAIRS&rdquo;,all[,562])
+all[,562]&lt;-gsub(&ldquo;3&rdquo;,&ldquo;WALKING_DOWNSTAIRS&rdquo;,all[,562])
+all[,562]&lt;-gsub(&ldquo;4&rdquo;,&ldquo;SITTING&rdquo;,all[,562])
+all[,562]&lt;-gsub(&ldquo;5&rdquo;,&ldquo;STANDING&rdquo;,all[,562])
+all[,562]&lt;-gsub(&ldquo;6&rdquo;,&ldquo;LAYING&rdquo;,all[,562])</p>
+
+<p>4,label the variable in the data set
+By using features.txt,label the variables in the dataset.
+nameList&lt;-read.table(&ldquo;features.txt&rdquo;)
+names(all)&lt;-c(as.character(nameList_vec),&ldquo;actionType&rdquo;,&ldquo;subjectName&rdquo;)</p>
+
+<p>5,make the new tidy dataframe with average with each variable for each activity for each subject.
+Calculate the each variable&#39;s mean in each subject using apply().
+mn_sub[i,]&lt;-as.vector(apply(subdf[,1:561],2,mean))</p>
+
+<p>Store the dataframe into .txt file using write.table().
+write.table(mn_sub,&ldquo;mn_s_dataset.txt&rdquo;,row.names=FALSE)</p>
+
+<p>###references</p>
+
+<p>[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012, Jorge L. Reyes-Ortiz, Alessandro Ghio, Luca Oneto, Davide Anguita. November 2012.</p>
+
+<p>[2]<a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a></p>
+
+<p>[3]<a href="https://class.coursera.org/getdata-011/human_grading/view/courses/973498/assessments/3/submissions">https://class.coursera.org/getdata-011/human_grading/view/courses/973498/assessments/3/submissions</a></p>
+
+<p>[4]<a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones">http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones</a></p>
+
+</body>
+
+</html>

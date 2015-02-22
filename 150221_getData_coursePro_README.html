@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>###project name :getting and cleaning data course project</p>
+
+<p>###procedure
+The purpose of this project is to make tidy data from [1].
+The scripts work at each steps as described below.
+All procedures almost followed the instruction of this course project[2].</p>
+
+<p>1,making merged dataset
+Download the data from [1].
+Read 6 files in train and test folders using read.table() to make test and train data.
+At every step, check the dimention of data using dim().</p>
+
+<p>for train data
+x_train&lt;-read.table(&ldquo;./train/X_train.txt&rdquo;)
+y_train&lt;-read.table(&ldquo;./train/y_train.txt&rdquo;)
+sub_train&lt;-read.table(&ldquo;./train/subject_train.txt&rdquo;)</p>
+
+<p>for test data
+x_test&lt;-read.table(&ldquo;./test/X_test.txt&rdquo;)
+y_test&lt;-read.table(&ldquo;./test/y_test.txt&rdquo;)
+sub_test&lt;-read.table(&ldquo;./test/subject_test.txt&rdquo;)</p>
+
+<p>Combine each dataset using(cbind().
+trainset&lt;-cbind(x_train,y_train,sub_train)
+testset&lt;-cbind(x_test,y_test,sub_test)</p>
+
+<p>Merge train and test dataset using rbind().
+all&lt;-rbind(trainset,testset)</p>
+
+<p>2,calculate the mean or standard deviation of each measurement
+Using the whole dataset, all, calculate the mean or stadard deviation of each measurement.
+mn&lt;-apply(all[1:561],2,mean)
+s&lt;-apply(all[1:561],2,sd)</p>
+
+<p>3,change the name of activity column
+Using gsub(), change the y names to activity names descripted in activity_labels.txt.</p>
+
+<p>all[,562]&lt;-gsub(&ldquo;1&rdquo;,&ldquo;WALKING&rdquo;,all[,562])
+all[,562]&lt;-gsub(&ldquo;2&rdquo;,&ldquo;WALKING_UPSTAIRS&rdquo;,all[,562])
+all[,562]&lt;-gsub(&ldquo;3&rdquo;,&ldquo;WALKING_DOWNSTAIRS&rdquo;,all[,562])
+all[,562]&lt;-gsub(&ldquo;4&rdquo;,&ldquo;SITTING&rdquo;,all[,562])
+all[,562]&lt;-gsub(&ldquo;5&rdquo;,&ldquo;STANDING&rdquo;,all[,562])
+all[,562]&lt;-gsub(&ldquo;6&rdquo;,&ldquo;LAYING&rdquo;,all[,562])</p>
+
+<p>4,label the variable in the data set
+By using features.txt,label the variables in the dataset.
+nameList&lt;-read.table(&ldquo;features.txt&rdquo;)
+names(all)&lt;-c(as.character(nameList_vec),&ldquo;actionType&rdquo;,&ldquo;subjectName&rdquo;)</p>
+
+<p>5,make the new tidy dataframe with average with each variable for each activity for each subject.
+Calculate the each variable&#39;s mean in each subject using apply().
+mn_sub[i,]&lt;-as.vector(apply(subdf[,1:561],2,mean))</p>
+
+<p>Store the dataframe into .txt file using write.table().
+write.table(mn_sub,&ldquo;mn_s_dataset.txt&rdquo;,row.names=FALSE)</p>
+
+<p>###references
+[1]<a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a></p>
+
+<p>[2]<a href="https://class.coursera.org/getdata-011/human_grading/view/courses/973498/assessments/3/submissions">https://class.coursera.org/getdata-011/human_grading/view/courses/973498/assessments/3/submissions</a></p>
+
+</body>
+
+</html>
